@@ -10,14 +10,23 @@
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #ffd6e0, #e0f7fa);
+  /* Updated Background: Sunset Gradient */
+  background: linear-gradient(135deg, #fffbeb, #ffe7c4, #fed7aa);
   overflow-x: hidden;
   text-align: center;
-  color: #333;
+  color: #573100; /* Rich warm brown for text */
 }
 
 h1, h2, .shayari-text {
   font-family: 'Playfair Display', serif;
+}
+
+h1.big-name {
+  color: #ea580c; /* Bright Sunset Orange */
+}
+
+h2 {
+  color: #c2410c; /* Deeper Orange */
 }
 
 .page {
@@ -36,7 +45,6 @@ h1, h2, .shayari-text {
 
 .big-name {
   font-size: 3.5rem;
-  color: #ff4d6d;
   margin-bottom: 10px;
   animation: zoomIn 1.5s ease;
 }
@@ -50,7 +58,7 @@ h1, h2, .shayari-text {
   width: 280px;
   height: 380px;
   perspective: 1000px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  box-shadow: 0 10px 25px rgba(234, 88, 12, 0.2); /* Orange subtle shadow */
   border-radius: 15px;
   margin-bottom: 20px;
 }
@@ -62,7 +70,7 @@ h1, h2, .shayari-text {
   background-size: cover;
   background-position: center;
   transition: transform 0.8s;
-  background-color: #fff;
+  background-color: #fff; /* Placeholder if no photo */
 }
 
 .turn {
@@ -71,28 +79,36 @@ h1, h2, .shayari-text {
 
 .shayari-text {
   font-size: 1.4rem;
-  color: #c2185b;
+  color: #78350f; /* Amber Brown */
   min-height: 80px;
   margin: 15px 0;
   padding: 0 10px;
   font-style: italic;
 }
 
+/* Highlighted lines in poetry */
+.poetry-highlight {
+  color: #fbbf24; /* Golden Yellow */
+  font-weight: bold;
+}
+
 button {
   padding: 12px 30px;
   border-radius: 25px;
   border: none;
-  background: #ff8fab;
+  /* Updated Button: Golden/Orange Glow */
+  background: linear-gradient(135deg, #fbb03b, #ea580c);
   color: white;
   cursor: pointer;
   margin-top: 20px;
   font-size: 1rem;
-  transition: 0.3s;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: 0.3s ease;
+  box-shadow: 0 4px 10px rgba(234, 88, 12, 0.3);
 }
 
 button:hover {
-  background: #ff4d6d;
+  background: linear-gradient(135deg, #ea580c, #c2410c); /* Deeper orange on hover */
+  box-shadow: 0 6px 15px rgba(234, 88, 12, 0.4);
 }
 
 .heart {
@@ -100,7 +116,6 @@ button:hover {
   bottom: -10px;
   font-size: 20px;
   animation: floatUp 6s linear infinite;
-  color: #ff6b81;
   z-index: -1;
 }
 
@@ -148,7 +163,7 @@ button:hover {
 
 <div class="page" id="finalPage">
   <h1>❤️ Forever ❤️</h1>
-  <img src="finalphoto.jpg" width="250" style="border-radius:15px;">
+  <img src="finalphoto.jpg" width="250" style="border-radius:15px; box-shadow: 0 8px 20px rgba(0,0,0,0.1);">
   <p>I love you forever Gauri ❤️</p>
 </div>
 
@@ -171,7 +186,7 @@ function nextPage() {
 /* Gallery Data (6 Photos + 6 Hindi Lines) */
 const contentData = [
   { img: "photo1.jpg", text: "मलमल, रेशम, खद्दर अच्छा लगता है,<br>तुम जो पहनो तुम पर सब अच्छा लगता है।" },
-  { img: "photo2.jpg", text: "इतना अच्छा शायद ही कुछ लगता हो,<br>जितना तुमको छू कर अच्छा लगता है।" },
+  { img: "photo2.jpg", text: "<span class='poetry-highlight'>इतना अच्छा शायद ही कुछ लगता हो,<br>जितना तुमको छू कर अच्छा लगता है।</span>" },
   { img: "photo3.jpg", text: "हम तुम दोनों मिल कर दुनिया जीतेंगे,<br>हमको ऐसी धुन पर सब अच्छा लगता है।" },
   { img: "photo4.jpg", text: "तुम मुझको अच्छी लगती रहना, और सुनो,<br>तुम्हारा अच्छा लगना अच्छा लगता है।" },
   { img: "photo5.jpg", text: "मेरे हाथ की मेहनत तेरे काम आए,<br>मुझको अपने घर पर सब अच्छा लगता है।" },
@@ -205,10 +220,15 @@ document.body.addEventListener("click", function () {
   if (music) music.play();
 }, { once: true });
 
-/* Hearts */
+/* Hearts (Now Golden/Orange) */
 function createHeart() {
   const heart = document.createElement("div");
   heart.classList.add("heart");
+  
+  // Randomly choose between a yellow or orange heart
+  const colors = ["#fbbf24", "#ea580c"]; // Golden Yellow or Sunset Orange
+  heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+  
   heart.innerHTML = "❤️";
   heart.style.left = Math.random() * 100 + "vw";
   document.body.appendChild(heart);
