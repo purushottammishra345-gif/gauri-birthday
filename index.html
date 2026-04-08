@@ -1,18 +1,23 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <title>For Gauri ❤️</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
 body {
   margin: 0;
-  font-family: 'Poppins', 'Arial', sans-serif;
+  font-family: 'Poppins', sans-serif;
   background: linear-gradient(135deg, #ffd6e0, #e0f7fa);
   overflow-x: hidden;
   text-align: center;
   color: #333;
+}
+
+h1, h2, .shayari-text {
+  font-family: 'Playfair Display', serif;
 }
 
 .page {
@@ -41,21 +46,13 @@ body {
   to {transform: scale(1);}
 }
 
-/* Photo Gallery Section */
-.gallery-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  max-width: 90%;
-}
-
 .photo-frame {
   width: 280px;
   height: 380px;
   perspective: 1000px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
   border-radius: 15px;
+  margin-bottom: 20px;
 }
 
 .photo {
@@ -64,55 +61,40 @@ body {
   border-radius: 15px;
   background-size: cover;
   background-position: center;
-  transition: transform 0.6s ease-in-out;
-  background-color: #fce4ec; /* Placeholder color */
+  transition: transform 0.8s;
+  background-color: #fff;
 }
 
-/* Shayari Text Style */
+.turn {
+  transform: rotateY(180deg);
+}
+
 .shayari-text {
-  font-size: 1.3rem;
-  line-height: 1.6;
+  font-size: 1.4rem;
   color: #c2185b;
-  font-weight: 500;
-  min-height: 3.2em; /* Keeps space for 2 lines */
-  margin: 10px 0;
-  transition: opacity 0.4s;
-}
-
-.highlight {
-  color: #ff4d6d;
-  font-weight: bold;
-}
-
-/* Buttons */
-.btn-group {
-  display: flex;
-  gap: 15px;
-  margin-top: 15px;
+  min-height: 80px;
+  margin: 15px 0;
+  padding: 0 10px;
+  font-style: italic;
 }
 
 button {
-  padding: 12px 25px;
+  padding: 12px 30px;
   border-radius: 25px;
   border: none;
   background: #ff8fab;
   color: white;
   cursor: pointer;
+  margin-top: 20px;
   font-size: 1rem;
+  transition: 0.3s;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  transition: background 0.3s;
 }
 
 button:hover {
   background: #ff4d6d;
 }
 
-button:disabled {
-  background: #ddd;
-  cursor: not-allowed;
-}
-
-/* Hearts Effect */
 .heart {
   position: fixed;
   bottom: -10px;
@@ -123,47 +105,50 @@ button:disabled {
 }
 
 @keyframes floatUp {
-  0% {transform: translateY(0) rotate(0deg); opacity: 1;}
-  100% {transform: translateY(-110vh) rotate(360deg); opacity: 0;}
+  0% {transform: translateY(0);}
+  100% {transform: translateY(-100vh);}
 }
 </style>
 </head>
 
 <body>
 
-<div class="page active" id="page1">
+<div class="page active">
   <h1 class="big-name">Gauri ❤️</h1>
-  <p>शायद मैंने सही वक्त पर न कहा हो... <br>लेकिन मेरा दिल एक पल के लिए भी तुम्हें नहीं भूला।</p>
-  <button onclick="nextPage()">Tap to see magic 💫</button>
+  <p>Maybe I didn’t say it at the perfect time… but my heart never forgot you for a second.<br>
+  You are my everything ❤️</p>
+  <button onclick="nextPage()">Tap to continue 💫</button>
 </div>
 
-<div class="page" id="page2">
+<div class="page">
   <h2>Our Moments 📸</h2>
-  
-  <div class="gallery-container">
-    <div class="photo-frame">
-      <div class="photo" id="mainPhoto"></div>
-    </div>
-    
-    <p class="shayari-text" id="mainShayari">
-      </p>
+
+  <div class="photo-frame">
+    <div class="photo" id="photoDisplay"></div>
   </div>
 
-  <div class="btn-group">
-    <button onclick="prevSlide()" id="prevBtn" disabled>⬅️ Back</button>
-    <button onclick="nextSlide()" id="nextBtn">Next ❤️</button>
+  <p class="shayari-text" id="shayariDisplay"></p>
+
+  <div style="display:flex; gap:10px;">
+    <button onclick="changeContent()">Next Photo ❤️</button>
+    <button onclick="nextPage()">Continue ➡️</button>
   </div>
 </div>
 
-<div class="page" id="page3">
+<div class="page">
   <h1>Happy Birthday 🎂</h1>
-  <p>तुम मेरी शांति हो, मेरी खुशी हो, मेरा हमेशा हो ❤️</p>
-  <button onclick="nextPage()">A small gift 🎁</button>
+  <p>You are my peace, my happiness, my forever ❤️</p>
+  <button onclick="nextPage()">One more thing 🎁</button>
+</div>
+
+<div class="page">
+  <h1>Click for Surprise 🎁</h1>
+  <button onclick="showSurprise()">Click Me ❤️</button>
 </div>
 
 <div class="page" id="finalPage">
   <h1>❤️ Forever ❤️</h1>
-  <img src="finalphoto.jpg" alt="Our Final Photo" style="width: 260px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.2);">
+  <img src="finalphoto.jpg" width="250" style="border-radius:15px;">
   <p>I love you forever Gauri ❤️</p>
 </div>
 
@@ -172,116 +157,70 @@ button:disabled {
 </audio>
 
 <script>
-let currentPageIndex = 0;
+let current = 0;
 const pages = document.querySelectorAll('.page');
 
-// 1. Navigation between main pages
 function nextPage() {
-  pages[currentPageIndex].classList.remove('active');
-  currentPageIndex++;
-  if (currentPageIndex < pages.length) {
-    pages[currentPageIndex].classList.add('active');
+  pages[current].classList.remove('active');
+  current++;
+  if (current < pages.length) {
+    pages[current].classList.add('active');
   }
 }
 
-// 2. Gallery Data: Photos and corresponding Shayari lines
-const galleryData = [
-  { 
-    photo: "photo1.jpg", 
-    text: "मलमल, रेशम, खद्दर अच्छा लगता है,<br>तुम जो पहनो तुम पर सब अच्छा लगता है।" 
-  },
-  { 
-    photo: "photo2.jpg", 
-    text: "<span class='highlight'>इतना अच्छा शायद ही कुछ लगता हो,<br>जितना तुमको छू कर अच्छा लगता है।</span>" 
-  },
-  { 
-    photo: "photo3.jpg", 
-    text: "हम तुम दोनों मिल कर दुनिया जीतेंगे,<br>हमको ऐसी धुन पर सब अच्छा लगता है।" 
-  },
-  { 
-    photo: "photo4.jpg", 
-    text: "तुम मुझको अच्छी लगती रहना, और सुनो,<br>तुम्हारा अच्छा लगना अच्छा लगता है।" 
-  },
-  { 
-    photo: "photo5.jpg", 
-    text: "मेरे हाथ की मेहनत तेरे काम आए,<br>मुझको अपने घर पर सब अच्छा लगता है।" 
-  },
-  { 
-    photo: "photo6.jpg", 
-    text: "इकराम अब मैं सबको अच्छा लगता हूँ,<br>उसको मुझमें अक्सर सब अच्छा लगता है।" 
-  }
+/* Gallery Data (6 Photos + 6 Hindi Lines) */
+const contentData = [
+  { img: "photo1.jpg", text: "मलमल, रेशम, खद्दर अच्छा लगता है,<br>तुम जो पहनो तुम पर सब अच्छा लगता है।" },
+  { img: "photo2.jpg", text: "इतना अच्छा शायद ही कुछ लगता हो,<br>जितना तुमको छू कर अच्छा लगता है।" },
+  { img: "photo3.jpg", text: "हम तुम दोनों मिल कर दुनिया जीतेंगे,<br>हमको ऐसी धुन पर सब अच्छा लगता है।" },
+  { img: "photo4.jpg", text: "तुम मुझको अच्छी लगती रहना, और सुनो,<br>तुम्हारा अच्छा लगना अच्छा लगता है।" },
+  { img: "photo5.jpg", text: "मेरे हाथ की मेहनत तेरे काम आए,<br>मुझको अपने घर पर सब अच्छा लगता है।" },
+  { img: "photo6.jpg", text: "इकराम अब मैं सबको अच्छा लगता हूँ,<br>उसको मुझमें अक्सर सब अच्छा लगता है।" }
 ];
 
-let currentSlideIndex = 0;
-const photoDiv = document.getElementById("mainPhoto");
-const shayariMsg = document.getElementById("mainShayari");
-const prevBtn = document.getElementById("prevBtn");
-const nextBtn = document.getElementById("nextBtn");
+let dataIndex = 0;
+const photoDiv = document.getElementById("photoDisplay");
+const textDiv = document.getElementById("shayariDisplay");
 
-// Initialize Gallery on Load
+// Set initial content
 window.onload = function () {
-  updateSlide();
+  photoDiv.style.backgroundImage = `url(${contentData[0].img})`;
+  textDiv.innerHTML = contentData[0].text;
 };
 
-// 3. Update Photo and Text together
-function updateSlide() {
-  const currentData = galleryData[currentSlideIndex];
-  
-  // Apply a subtle fade effect to the text
-  shayariMsg.style.opacity = 0;
+function changeContent() {
+  photoDiv.classList.add("turn");
   
   setTimeout(() => {
-    // Change photo (using backgroundImage)
-    photoDiv.style.backgroundImage = `url(${currentData.photo})`;
-    // Change text
-    shayariMsg.innerHTML = currentData.text;
-    shayariMsg.style.opacity = 1;
-  }, 200);
-
-  // Handle button states
-  prevBtn.disabled = (currentSlideIndex === 0);
-  
-  // If at last slide, 'Next' button goes to the Birthday page
-  if (currentSlideIndex === galleryData.length - 1) {
-    nextBtn.innerHTML = "Continue ➡️";
-    nextBtn.onclick = nextPage; // Change the function
-  } else {
-    nextBtn.innerHTML = "Next ❤️";
-    nextBtn.onclick = nextSlide; // Keep original function
-  }
+    dataIndex = (dataIndex + 1) % contentData.length;
+    photoDiv.style.backgroundImage = `url(${contentData[dataIndex].img})`;
+    textDiv.innerHTML = contentData[dataIndex].text;
+    photoDiv.classList.remove("turn");
+  }, 400);
 }
 
-function nextSlide() {
-  if (currentSlideIndex < galleryData.length - 1) {
-    currentSlideIndex++;
-    updateSlide();
-  }
-}
-
-function prevSlide() {
-  if (currentSlideIndex > 0) {
-    currentSlideIndex--;
-    updateSlide();
-  }
-}
-
-// 4. Music play on first click
+/* Music */
 document.body.addEventListener("click", function () {
   let music = document.getElementById("bgMusic");
-  if (music) music.play().catch(e => console.log("Music play blocked"));
+  if (music) music.play();
 }, { once: true });
 
-// 5. Floating Hearts Effect
+/* Hearts */
 function createHeart() {
   const heart = document.createElement("div");
   heart.classList.add("heart");
   heart.innerHTML = "❤️";
   heart.style.left = Math.random() * 100 + "vw";
-  heart.style.animationDuration = (Math.random() * 2 + 4) + "s"; // 4-6s
   document.body.appendChild(heart);
   setTimeout(() => heart.remove(), 6000);
 }
 setInterval(createHeart, 400);
+
+/* Final Page */
+function showSurprise() {
+  pages[current].classList.remove('active');
+  document.getElementById('finalPage').classList.add('active');
+}
 </script>
 
 </body>
