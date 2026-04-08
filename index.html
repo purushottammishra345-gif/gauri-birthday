@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Gauri ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #ffd6e0, #e0f7fa);
+  overflow: hidden;
+  text-align: center;
+}
+
+.page {
+  display: none;
+  height: 100vh;
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.active {
+  display: flex;
+  animation: fade 1s ease;
+}
+
+@keyframes fade {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+.big-name {
+  font-size: 3.5rem;
+  color: #ff4d6d;
+  animation: zoomIn 2s ease;
+}
+
+@keyframes zoomIn {
+  from {transform: scale(0);}
+  to {transform: scale(1);}
+}
+
+button {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 25px;
+  background: #ff8fab;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+img {
+  max-width: 80%;
+  border-radius: 20px;
+  margin: 10px;
+}
+
+/* Floating Hearts */
+.heart {
+  position: fixed;
+  bottom: -10px;
+  font-size: 20px;
+  animation: floatUp 6s linear infinite;
+  color: #ff6b81;
+}
+
+@keyframes floatUp {
+  0% {transform: translateY(0);}
+  100% {transform: translateY(-100vh);}
+}
+</style>
+</head>
+
+<body>
+
+<!-- Page 1 -->
+<div class="page active">
+  <h1 class="big-name">Gauri ❤️</h1>
+  <p>Maybe I didn’t say it at the perfect time… but my heart never forgot you for a second.<br>
+  You are not just special today, you are my every day, my calm, my happiness… my Gauri.</p>
+  <button onclick="nextPage()">Tap to continue 💫</button>
+</div>
+
+<!-- Page 2 -->
+<div class="page">
+  <h1>Our Moments 📸</h1>
+  <img src="photo1.jpg">
+  <img src="photo2.jpg">
+  <img src="photo3.jpg">
+  <img src="photo4.jpg">
+  <img src="photo5.jpg">
+  <img src="photo6.jpg">
+  <button onclick="nextPage()">Next ❤️</button>
+</div>
+
+<!-- Page 3 -->
+<div class="page">
+  <h1>Happy Birthday 🎂</h1>
+  <p>You are the most beautiful part of my life.  
+  I may not always say it perfectly, but I feel it deeply every single day.  
+  Thank you for being you ❤️</p>
+  <button onclick="nextPage()">One more thing 🎁</button>
+</div>
+
+<!-- Page 4 -->
+<div class="page">
+  <h1>Click for Surprise 🎁</h1>
+  <button onclick="showSurprise()">Click Me ❤️</button>
+</div>
+
+<!-- Final Page -->
+<div class="page" id="finalPage">
+  <h1>❤️</h1>
+  <img src="finalphoto.jpg">
+  <p>And here comes the part I was saving for the most…  
+  No matter how late I am, no matter how imperfect I am…  
+  my love for you has always been real, constant, and only yours.  
+  You are my happiest place, my peace, my forever.  
+  Happy Birthday, my love ❤️</p>
+</div>
+
+<audio autoplay loop>
+  <source src="music.mp3" type="audio/mp3">
+</audio>
+
+<script>
+let current = 0;
+const pages = document.querySelectorAll('.page');
+
+function nextPage() {
+  pages[current].classList.remove('active');
+  current++;
+  pages[current].classList.add('active');
+}
+
+function showSurprise() {
+  pages[current].classList.remove('active');
+  document.getElementById('finalPage').classList.add('active');
+  confetti();
+}
+
+/* Floating Hearts */
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.innerHTML = "❤️";
+  heart.style.left = Math.random() * 100 + "vw";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 6000);
+}
+setInterval(createHeart, 400);
+
+/* Confetti */
+function confetti() {
+  for (let i = 0; i < 50; i++) {
+    let conf = document.createElement("div");
+    conf.style.position = "fixed";
+    conf.style.width = "10px";
+    conf.style.height = "10px";
+    conf.style.background = "pink";
+    conf.style.top = "0";
+    conf.style.left = Math.random() * 100 + "vw";
+    conf.style.animation = "fall 3s linear";
+    document.body.appendChild(conf);
+    setTimeout(() => conf.remove(), 3000);
+  }
+}
+</script>
+
+</body>
+</html>
